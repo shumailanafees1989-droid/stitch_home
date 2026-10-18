@@ -54,7 +54,7 @@ async function apiGetProducts() {
   if (client) {
     try {
       const { data, error } = await client
-        .from('products')
+        .from('lumiere_products')
         .select('*')
         .order('created_at', { ascending: false });
 
@@ -92,7 +92,7 @@ async function apiGetWishlist() {
   if (client) {
     try {
       const { data, error } = await client
-        .from('wishlist')
+        .from('lumiere_wishlist')
         .select('product_id')
         .eq('user_id', 'guest_user');
 
@@ -129,12 +129,12 @@ async function apiToggleWishlist(productId) {
   if (client) {
     try {
       if (isAdded) {
-        await client.from('wishlist').insert({
+        await client.from('lumiere_wishlist').insert({
           user_id: 'guest_user',
           product_id: productId
         });
       } else {
-        await client.from('wishlist')
+        await client.from('lumiere_wishlist')
           .delete()
           .eq('user_id', 'guest_user')
           .eq('product_id', productId);
@@ -152,7 +152,7 @@ async function apiCreateOrder(orderData) {
   const client = initSupabase();
   if (client) {
     try {
-      const { data, error } = await client.from('orders').insert([orderData]).select();
+      const { data, error } = await client.from('lumiere_orders').insert([orderData]).select();
       if (!error && data) return { success: true, order: data[0] };
     } catch (e) {
       console.warn('Supabase order creation error:', e.message);

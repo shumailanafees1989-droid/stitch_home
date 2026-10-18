@@ -3,8 +3,8 @@
 -- Run this in your Supabase Project -> SQL Editor -> New Query -> Run
 -- ====================================================================
 
--- 1. Create Products Table
-CREATE TABLE IF NOT EXISTS public.products (
+-- 1. Create Lumiere Products Table
+CREATE TABLE IF NOT EXISTS public.lumiere_products (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     subtitle TEXT,
@@ -22,17 +22,17 @@ CREATE TABLE IF NOT EXISTS public.products (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
--- 2. Create Wishlist Table
-CREATE TABLE IF NOT EXISTS public.wishlist (
+-- 2. Create Lumiere Wishlist Table
+CREATE TABLE IF NOT EXISTS public.lumiere_wishlist (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id TEXT NOT NULL DEFAULT 'guest_user',
-    product_id TEXT NOT NULL REFERENCES public.products(id) ON DELETE CASCADE,
+    product_id TEXT NOT NULL REFERENCES public.lumiere_products(id) ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     UNIQUE(user_id, product_id)
 );
 
--- 3. Create Orders / Cart Inquiries Table
-CREATE TABLE IF NOT EXISTS public.orders (
+-- 3. Create Lumiere Orders Table
+CREATE TABLE IF NOT EXISTS public.lumiere_orders (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     customer_name TEXT,
     customer_email TEXT,
@@ -43,28 +43,28 @@ CREATE TABLE IF NOT EXISTS public.orders (
 );
 
 -- 4. Enable Row Level Security (RLS)
-ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.wishlist ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lumiere_products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lumiere_wishlist ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lumiere_orders ENABLE ROW LEVEL SECURITY;
 
--- 5. Policies for public access (Read products, insert/delete wishlist for demo)
-CREATE POLICY "Public read products" 
-ON public.products FOR SELECT USING (true);
+-- 5. Policies for public access
+DROP POLICY IF EXISTS "Public read lumiere_products" ON public.lumiere_products;
+CREATE POLICY "Public read lumiere_products" ON public.lumiere_products FOR SELECT USING (true);
 
-CREATE POLICY "Public read wishlist" 
-ON public.wishlist FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read lumiere_wishlist" ON public.lumiere_wishlist;
+CREATE POLICY "Public read lumiere_wishlist" ON public.lumiere_wishlist FOR SELECT USING (true);
 
-CREATE POLICY "Public insert wishlist" 
-ON public.wishlist FOR INSERT WITH CHECK (true);
+DROP POLICY IF EXISTS "Public insert lumiere_wishlist" ON public.lumiere_wishlist;
+CREATE POLICY "Public insert lumiere_wishlist" ON public.lumiere_wishlist FOR INSERT WITH CHECK (true);
 
-CREATE POLICY "Public delete wishlist" 
-ON public.wishlist FOR DELETE USING (true);
+DROP POLICY IF EXISTS "Public delete lumiere_wishlist" ON public.lumiere_wishlist;
+CREATE POLICY "Public delete lumiere_wishlist" ON public.lumiere_wishlist FOR DELETE USING (true);
 
-CREATE POLICY "Public insert orders" 
-ON public.orders FOR INSERT WITH CHECK (true);
+DROP POLICY IF EXISTS "Public insert lumiere_orders" ON public.lumiere_orders;
+CREATE POLICY "Public insert lumiere_orders" ON public.lumiere_orders FOR INSERT WITH CHECK (true);
 
 -- 6. Seed Initial High-Fashion Products
-INSERT INTO public.products (id, name, subtitle, category, price, formatted_price, description, material, origin, care, images, sizes, colors, featured)
+INSERT INTO public.lumiere_products (id, name, subtitle, category, price, formatted_price, description, material, origin, care, images, sizes, colors, featured)
 VALUES
 (
     'fluid-silk-slip-dress',
