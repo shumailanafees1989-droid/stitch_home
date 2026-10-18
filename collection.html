@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>LUMIERE | Collection 004 — L'Essence</title>
+  <meta name="description" content="Explore LUMIERE Collection 004. An asymmetrical curation of virgin wool tailoring, raw mulberry silks, and minimalist silhouettes."/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Editorial Custom Styles -->
+  <link rel="stylesheet" href="css/editorial.css"/>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#eeeeee",
+            "surface-variant": "#e2e2e2",
+            "surface-container-low": "#f3f3f3",
+            "primary-container": "#3b3b3b",
+            "surface": "#f9f9f9",
+            "surface-bright": "#f9f9f9",
+            "secondary": "#5f5e5e",
+            "on-primary": "#e2e2e2",
+            "surface-dim": "#dadada",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#c6c6c6",
+            "on-surface-variant": "#474747",
+            "on-surface": "#1b1b1b",
+            "background": "#f9f9f9",
+            "surface-container-high": "#e8e8e8",
+            "primary": "#000000",
+            "outline": "#777777"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"}
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+
+  <!-- ============================================================== -->
+  <!-- TOP APP BAR -->
+  <!-- ============================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav h-16 flex items-center justify-between px-6 border-b border-outline-variant/15">
+    <div class="flex items-center space-x-3">
+      <button data-action="open-menu" class="p-2 hover:opacity-70 transition-opacity" title="Open Navigation Menu">
+        <span class="material-symbols-outlined text-on-surface">menu</span>
+      </button>
+      <button data-action="open-supabase" class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 bg-surface-container/60 hover:bg-surface-container border border-outline-variant/20 text-[10px] uppercase font-label tracking-wider transition-colors" title="Supabase Database Settings">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <span>Supabase</span>
+      </button>
+    </div>
+
+    <a href="index.html" class="font-headline text-xl tracking-[0.3em] font-bold text-primary">
+      LUMIERE
+    </a>
+
+    <div class="flex items-center space-x-4">
+      <a href="wishlist.html" class="p-2 relative hover:opacity-70 transition-opacity" title="Wishlist">
+        <span class="material-symbols-outlined text-on-surface">favorite</span>
+        <span class="wishlist-count-badge bag-badge hidden">0</span>
+      </a>
+      <button data-action="open-cart" class="p-2 relative hover:opacity-70 transition-opacity" title="Shopping Bag">
+        <span class="material-symbols-outlined text-on-surface">shopping_bag</span>
+        <span class="cart-count-badge bag-badge hidden">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================== -->
+  <!-- MAIN CONTENT -->
+  <!-- ============================================================== -->
+  <main class="pt-24 pb-36 max-w-screen-xl mx-auto px-6">
+    
+    <!-- Editorial Header -->
+    <section class="mb-12">
+      <p class="font-label text-[0.6875rem] uppercase tracking-[0.25rem] text-outline mb-3">Collection 004 / L'Essence</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h1 class="font-headline text-5xl md:text-7xl max-w-2xl leading-tight font-light">
+          Quiet Elegance in Monochrome.
+        </h1>
+        <div id="product-count-label" class="font-label text-xs uppercase tracking-widest text-outline">
+          Showing 8 Pieces
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Search Toolbar -->
+    <section class="mb-16 pb-6 border-b border-outline-variant/25 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2 sm:gap-4 font-label text-xs uppercase tracking-widest" id="category-filter-buttons">
+        <button onclick="setCategoryFilter('ALL')" class="category-btn active px-4 py-2 border border-black bg-black text-white transition-all" data-cat="ALL">
+          All (8)
+        </button>
+        <button onclick="setCategoryFilter('Dresses')" class="category-btn px-4 py-2 border border-outline-variant/30 text-outline hover:border-black hover:text-black transition-all" data-cat="Dresses">
+          Dresses
+        </button>
+        <button onclick="setCategoryFilter('Outerwear')" class="category-btn px-4 py-2 border border-outline-variant/30 text-outline hover:border-black hover:text-black transition-all" data-cat="Outerwear">
+          Outerwear
+        </button>
+        <button onclick="setCategoryFilter('Tailoring')" class="category-btn px-4 py-2 border border-outline-variant/30 text-outline hover:border-black hover:text-black transition-all" data-cat="Tailoring">
+          Tailoring
+        </button>
+        <button onclick="setCategoryFilter('Accessories')" class="category-btn px-4 py-2 border border-outline-variant/30 text-outline hover:border-black hover:text-black transition-all" data-cat="Accessories">
+          Accessories
+        </button>
+      </div>
+
+      <!-- Search & Sort Controls -->
+      <div class="flex items-center space-x-4 w-full md:w-auto">
+        <div class="relative flex-1 md:w-56">
+          <input type="text" id="collection-search-input" oninput="handleSearch(this.value)" placeholder="Search pieces or fabrics..." class="w-full pl-9 pr-4 py-2 bg-surface-container-low border border-outline-variant/40 text-xs font-body focus:outline-none focus:border-black">
+          <span class="material-symbols-outlined absolute left-2.5 top-2 text-sm text-outline">search</span>
+        </div>
+
+        <select id="collection-sort-select" onchange="handleSort(this.value)" class="px-3 py-2 bg-surface-container-low border border-outline-variant/40 text-xs font-label uppercase tracking-wider focus:outline-none focus:border-black">
+          <option value="default">Sort: Editorial</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Alphabetical</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Asymmetrical Product Grid -->
+    <div id="collection-grid" class="grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-x-12">
+      <!-- Generated dynamically by script below -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="collection-empty" class="hidden text-center py-24 space-y-4">
+      <span class="material-symbols-outlined text-4xl text-outline-variant">search_off</span>
+      <h3 class="font-headline text-2xl font-light">No pieces match your selection</h3>
+      <p class="font-body text-sm text-on-surface-variant">Try selecting another category or clearing your search filter.</p>
+      <button onclick="resetFilters()" class="mt-4 px-8 py-3 bg-primary text-on-primary font-label text-xs uppercase tracking-widest">
+        View All Pieces
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- FIXED BOTTOM NAVIGATION BAR -->
+  <!-- ============================================================== -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 glass-nav h-20 border-t border-outline-variant/15 px-6">
+    <div class="grid grid-cols-4 h-full max-w-md mx-auto">
+      <a href="index.html" class="flex flex-col items-center justify-center cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label text-[10px] mt-1 tracking-wider">Home</span>
+      </a>
+      <a href="collection.html" class="flex flex-col items-center justify-center cursor-pointer text-primary">
+        <span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">storefront</span>
+        <span class="font-label text-[10px] mt-1 tracking-wider font-semibold">Shop</span>
+      </a>
+      <a href="wishlist.html" class="flex flex-col items-center justify-center cursor-pointer text-on-surface-variant hover:text-primary transition-colors relative">
+        <span class="material-symbols-outlined">favorite</span>
+        <span class="font-label text-[10px] mt-1 tracking-wider">Wishlist</span>
+        <span class="wishlist-count-badge bag-badge top-2 right-6 hidden">0</span>
+      </a>
+      <button onclick="openSupabaseModal()" class="flex flex-col items-center justify-center cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">database</span>
+        <span class="font-label text-[10px] mt-1 tracking-wider">Supabase</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================== -->
+  <!-- MOBILE SIDE MENU DRAWER (LEFT) -->
+  <!-- ============================================================== -->
+  <div id="menu-backdrop" onclick="closeMobileMenu()" class="fixed inset-0 bg-black/50 z-50 drawer-backdrop"></div>
+  <aside id="menu-drawer" class="fixed top-0 left-0 bottom-0 w-80 bg-surface-container-lowest z-50 p-8 flex flex-col justify-between drawer-left shadow-2xl">
+    <div>
+      <div class="flex justify-between items-center pb-8 border-b border-outline-variant/20">
+        <span class="font-headline text-xl tracking-[0.2em] font-bold">LUMIERE</span>
+        <button onclick="closeMobileMenu()" class="p-2 text-outline hover:text-black">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <nav class="mt-8 space-y-6">
+        <a href="index.html" class="block font-headline text-2xl font-light hover:translate-x-2 transition-transform">
+          01. Anthology (Home)
+        </a>
+        <a href="collection.html" class="block font-headline text-2xl font-light hover:translate-x-2 transition-transform text-black font-medium">
+          02. Collection 004
+        </a>
+        <a href="product.html?id=fluid-silk-slip-dress" class="block font-headline text-2xl font-light hover:translate-x-2 transition-transform">
+          03. Featured Atelier Piece
+        </a>
+        <a href="wishlist.html" class="block font-headline text-2xl font-light hover:translate-x-2 transition-transform">
+          04. Curated Wishlist
+        </a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-outline-variant/20 space-y-3">
+      <button onclick="closeMobileMenu(); openSupabaseModal();" class="w-full flex items-center justify-between px-4 py-3 bg-surface-container text-xs font-label uppercase tracking-widest hover:bg-surface-container-high transition-colors">
+        <span>Supabase Sync</span>
+        <span class="material-symbols-outlined text-sm">tune</span>
+      </button>
+      <p class="font-label text-[10px] uppercase tracking-widest text-outline text-center">
+        © LUMIERE Atelier • High-End Editorial
+      </p>
+    </div>
+  </aside>
+
+  <!-- ============================================================== -->
+  <!-- SHOPPING BAG DRAWER (RIGHT) -->
+  <!-- ============================================================== -->
+  <div id="cart-backdrop" onclick="closeCartDrawer()" class="fixed inset-0 bg-black/50 z-50 drawer-backdrop"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface-container-lowest z-50 p-6 flex flex-col justify-between drawer-panel shadow-2xl">
+    <div>
+      <div class="flex justify-between items-center pb-6 border-b border-outline-variant/20">
+        <div class="flex items-center space-x-2">
+          <span class="font-headline text-xl font-medium">Shopping Bag</span>
+          <span class="cart-count-badge bg-black text-white text-[10px] px-2 py-0.5 font-label rounded-full">0</span>
+        </div>
+        <button onclick="closeCartDrawer()" class="p-2 text-outline hover:text-black">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div id="cart-drawer-items" class="overflow-y-auto max-h-[60vh] pr-1 mt-4"></div>
+    </div>
+
+    <div class="pt-6 border-t border-outline-variant/20">
+      <div class="flex justify-between items-center mb-4">
+        <span class="font-label text-xs uppercase tracking-widest text-outline">Subtotal</span>
+        <span id="cart-subtotal" class="font-body text-xl font-medium">$0.00</span>
+      </div>
+      <p class="font-label text-[10px] text-outline tracking-wider uppercase mb-4">Taxes &amp; courier shipping calculated at checkout.</p>
+      <button onclick="openCheckoutModal()" class="w-full bg-primary text-on-primary py-4 font-label text-xs uppercase tracking-[0.2em] hover:bg-primary-container transition-colors">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================== -->
+  <!-- CHECKOUT MODAL -->
+  <!-- ============================================================== -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-surface-container-lowest max-w-md w-full p-8 border border-outline-variant/30 shadow-2xl relative">
+      <button onclick="closeCheckoutModal()" class="absolute top-6 right-6 p-2 text-outline hover:text-black">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="mb-6">
+        <p class="font-label text-[10px] tracking-[0.2em] text-outline uppercase">Order Confirmation</p>
+        <h3 class="font-headline text-3xl font-light mt-1">Checkout</h3>
+      </div>
+      <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block font-label text-[11px] uppercase tracking-wider text-on-surface-variant mb-1">Full Name</label>
+          <input type="text" id="checkout-name" required placeholder="Elena Rostova" class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/40 text-sm focus:outline-none focus:border-black font-body">
+        </div>
+        <div>
+          <label class="block font-label text-[11px] uppercase tracking-wider text-on-surface-variant mb-1">Email Address</label>
+          <input type="email" id="checkout-email" required placeholder="elena@lumiere.com" class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/40 text-sm focus:outline-none focus:border-black font-body">
+        </div>
+        <div>
+          <label class="block font-label text-[11px] uppercase tracking-wider text-on-surface-variant mb-1">Delivery Address</label>
+          <input type="text" id="checkout-address" required placeholder="Via Montenapoleone 8, Milan" class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/40 text-sm focus:outline-none focus:border-black font-body">
+        </div>
+        <div class="py-4 border-t border-b border-outline-variant/20 flex justify-between items-center">
+          <span class="font-label text-xs uppercase tracking-widest">Total Amount</span>
+          <span id="checkout-total" class="font-headline text-2xl font-semibold">$0.00</span>
+        </div>
+        <button type="submit" id="checkout-submit-btn" class="w-full bg-primary text-on-primary py-4 font-label text-xs uppercase tracking-[0.25em] hover:bg-primary-container transition-colors">
+          Confirm Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Collection Page Interactive Logic -->
+  <script>
+    let currentCategory = 'ALL';
+    let searchQuery = '';
+    let currentSort = 'default';
+    let allProducts = [];
+
+    // Span column patterns for asymmetrical editorial aesthetic
+    const colPatterns = [
+      'md:col-span-7',
+      'md:col-span-5 md:mt-24',
+      'md:col-span-4',
+      'md:col-span-8 md:mt-16',
+      'md:col-span-5',
+      'md:col-span-7',
+      'md:col-span-6',
+      'md:col-span-6'
+    ];
+
+    async function initCollectionPage() {
+      // Check URL query param for category
+      const params = new URLSearchParams(window.location.search);
+      const urlCat = params.get('category');
+      if (urlCat) {
+        currentCategory = urlCat;
+      }
+
+      if (typeof apiGetProducts === 'function') {
+        allProducts = await apiGetProducts();
+      } else {
+        allProducts = LUMIERE_PRODUCTS;
+      }
+
+      renderFilteredProducts();
+      updateCategoryButtonStyles();
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      updateCategoryButtonStyles();
+      renderFilteredProducts();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      renderFilteredProducts();
+    }
+
+    function handleSort(val) {
+      currentSort = val;
+      renderFilteredProducts();
+    }
+
+    function resetFilters() {
+      currentCategory = 'ALL';
+      searchQuery = '';
+      currentSort = 'default';
+      const searchInput = document.getElementById('collection-search-input');
+      const sortSelect = document.getElementById('collection-sort-select');
+      if (searchInput) searchInput.value = '';
+      if (sortSelect) sortSelect.value = 'default';
+      updateCategoryButtonStyles();
+      renderFilteredProducts();
+    }
+
+    function updateCategoryButtonStyles() {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        const cat = btn.getAttribute('data-cat');
+        if (cat === currentCategory) {
+          btn.className = 'category-btn active px-4 py-2 border border-black bg-black text-white transition-all';
+        } else {
+          btn.className = 'category-btn px-4 py-2 border border-outline-variant/30 text-outline hover:border-black hover:text-black transition-all';
+        }
+      });
+    }
+
+    function renderFilteredProducts() {
+      let filtered = allProducts.filter(item => {
+        const matchCategory = currentCategory === 'ALL' || item.category === currentCategory;
+        const matchSearch = !searchQuery || 
+          item.name.toLowerCase().includes(searchQuery) ||
+          item.subtitle.toLowerCase().includes(searchQuery) ||
+          (item.material && item.material.toLowerCase().includes(searchQuery));
+        return matchCategory && matchSearch;
+      });
+
+      // Sorting
+      if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (currentSort === 'name') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      const grid = document.getElementById('collection-grid');
+      const emptyEl = document.getElementById('collection-empty');
+      const countLabel = document.getElementById('product-count-label');
+
+      if (countLabel) {
+        countLabel.textContent = `Showing ${filtered.length} Piece${filtered.length === 1 ? '' : 's'}`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyEl.classList.remove('hidden');
+        return;
+      }
+
+      emptyEl.classList.add('hidden');
+
+      let html = '';
+      filtered.forEach((product, idx) => {
+        const colClass = colPatterns[idx % colPatterns.length];
+        const isWishlisted = LumiereState.wishlist.includes(product.id);
+        const heartFill = isWishlisted ? "'FILL' 1, 'wght' 400" : "'FILL' 0, 'wght' 300";
+
+        html += `
+          <div class="${colClass} group">
+            <div class="relative bg-surface-container-lowest overflow-hidden">
+              <a href="product.html?id=${product.id}" class="block">
+                <img alt="${product.name}" class="w-full aspect-[4/5] object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0" src="${product.images[0]}"/>
+              </a>
+              <button onclick="toggleWishlistItem('${product.id}', this)" data-wishlist-id="${product.id}" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-sm transition-all hover:scale-110" title="Save to Wishlist">
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: ${heartFill};">favorite</span>
+              </button>
+            </div>
+            
+            <div class="mt-8 flex justify-between items-start">
+              <div>
+                <a href="product.html?id=${product.id}">
+                  <h3 class="font-headline text-2xl group-hover:opacity-80 transition-opacity">${product.name}</h3>
+                </a>
+                <p class="font-label text-xs uppercase tracking-widest text-outline mt-1">${product.subtitle}</p>
+              </div>
+              <span class="font-body text-lg font-light">${product.formattedPrice}</span>
+            </div>
+
+            <div class="mt-4 flex items-center space-x-4">
+              <button onclick="addToCart('${product.id}', '${product.sizes[0] || 'M'}', '${product.colors[0]?.name || 'Mono'}', 1)" class="bg-primary text-on-primary px-6 py-2.5 font-label text-[11px] uppercase tracking-widest hover:bg-primary-container transition-colors">
+                Add to Bag
+              </button>
+              <a href="product.html?id=${product.id}" class="editorial-underline font-label text-[11px] uppercase tracking-widest text-primary">
+                Details
+              </a>
+            </div>
+          </div>
+        `;
+      });
+
+      grid.innerHTML = html;
+      updateWishlistIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCollectionPage();
+    });
+  </script>
+</body>
+</html>
