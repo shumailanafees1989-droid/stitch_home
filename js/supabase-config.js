@@ -1,9 +1,9 @@
 // LUMIERE Supabase Client Configuration & Sync Manager
 
 const SUPABASE_CONFIG = {
-  // Default values or user-configured credentials
-  url: localStorage.getItem('lumiere_supabase_url') || '',
-  anonKey: localStorage.getItem('lumiere_supabase_anon_key') || '',
+  // Live project credentials
+  url: localStorage.getItem('lumiere_supabase_url') || 'https://ovgsiytewrkakknpumhx.supabase.co',
+  anonKey: localStorage.getItem('lumiere_supabase_anon_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92Z3NpeXRld3JrYWtrbnB1bWh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNzk3MTksImV4cCI6MjEwNzY1NTcxOX0.D8fReASLItbv9VdPuDWRMxY2pTNS4EY2iP8MVNpHTE8',
   client: null,
   isConnected: false
 };
