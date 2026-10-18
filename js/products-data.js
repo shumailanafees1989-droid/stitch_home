@@ -1,5 +1,5 @@
-// LUMIERE Product Catalog Data
-// High-End Editorial Collection
+// LUMIERE Complete Product Catalog
+// Sourced from Google Stitch Screens (1, 2, 3, 4)
 
 const LUMIERE_PRODUCTS = [
   {
@@ -70,6 +70,67 @@ const LUMIERE_PRODUCTS = [
     featured: true
   },
   {
+    id: "archive-clutch",
+    name: "Archive Clutch",
+    subtitle: "Calfskin Leather",
+    category: "Accessories",
+    price: 890,
+    formattedPrice: "$890.00",
+    description: "Architectural envelope clutch featuring hand-painted raw edges and concealed magnetic hardware. Crafted from supple Italian box calf leather with lambskin interior lining.",
+    material: "100% Box Calf Leather",
+    origin: "Bologna, Italy",
+    care: "Specialist Leather Clean",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCfCXnEoxSjm1vprDCZIO6xHGH4yyRMrAWoA0tdrYH1frMCHvrGY4V-ZZhXqiSM9kCn3qSQUvmnHioppH0PYXbG3rbYfkPaHKcsn3ZR8ql8d0e1YRexykhOPPIDOFMizI-KMK1spqGVVokHHgaEDlkdYqWOqoLb96JprRCRYp01BQC4GcvojMubvOv8ciX0N9Vo7njV3GrCND80HH79hmAixUYDGere_37Ohx0hXD0yf5GGXhDnx5AZSPTVgVvJfIiFRoudsiRMvAA"
+    ],
+    sizes: ["One Size"],
+    colors: [
+      { name: "Nero", hex: "#0c0c0c" }
+    ],
+    featured: false
+  },
+  {
+    id: "structured-blazer",
+    name: "Structured Blazer",
+    subtitle: "Tailored Virgin Wool",
+    category: "Tailoring",
+    price: 1200,
+    formattedPrice: "$1,200.00",
+    description: "Impeccably tailored single-breasted blazer with sharp structured shoulders, elongated lapels, and horn buttons. Fully lined with pure cupro.",
+    material: "100% Virgin Wool Flannel",
+    origin: "Savile Row, London",
+    care: "Dry Clean Only",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDa0AOJS1_hnUDp5sTjQBKwvZnErVdmSuRWibtbC2OxMO3YBdF2vh_CiiLc9g_tCKxgdGq3f10v4ukY2SsANfrB5kW-0aMpcnjq9nK-RtqAa7SX3BP5m-wuXR_TYoE1NXh5PDBD029VzWutYrCp9U6_6jKmmgoey9jm9pV_FkDAw5oL8lu3Ab2Msrhy1Cg_bidj5l8QCmmqjnpTydARkfmVWXqsW2mpfBjTQ5FpodtSNI1PCE9YUPZcu-7Bc6WJUCCx5wJcEsP4MhE"
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [
+      { name: "Ink Black", hex: "#111114" },
+      { name: "Charcoal Melange", hex: "#2f2f31" }
+    ],
+    featured: true
+  },
+  {
+    id: "lumiere-trench-limited",
+    name: "Lumière Trench",
+    subtitle: "Limited Edition / Atelier",
+    category: "Outerwear",
+    price: 3100,
+    formattedPrice: "$3,100.00",
+    description: "The pinnacle of our outerwear anthology. Limited to 25 individually numbered pieces worldwide. Cut from rare water-resistant double-faced cashmere and silk blend.",
+    material: "Cashmere & Silk Twill",
+    origin: "Paris, France",
+    care: "Specialist Atelier Care",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCY3wii-Z4qR0xFlKFPvv4vnkF_KTx2WERbN3fhmhdFxcIPOg2Xqx3nhnMLnNOaeuiT1JTmbY3IfHPS17KWSGxk5SPK6oVgMACf8_1yJHFqSqfGig6p218DlZ_NqVliWOvJcvyLTTmrKMcAjchrkZ5zShL-fujANRW9C-4arGKku9eklL5rhtuGkMtYkALlqKAKdF1Ye3Vn7mzV3VNl25R28XBPMPsvJgKpSwlxQKMbjUUttFxJIxX7Ue-cvdjJH-j72QnK0s8QSnA"
+    ],
+    sizes: ["S", "M", "L"],
+    colors: [
+      { name: "Pure Midnight", hex: "#0d0d0f" }
+    ],
+    featured: true
+  },
+  {
     id: "structure-top",
     name: "Structure Top",
     subtitle: "Sculpted Canvas",
@@ -134,7 +195,7 @@ const LUMIERE_PRODUCTS = [
   },
   {
     id: "leather-obscura-bag",
-    name: "Leather Obscura Bag",
+    name: "Leather Obscura",
     subtitle: "Calfskin Accessories",
     category: "Accessories",
     price: 210,
@@ -144,13 +205,11 @@ const LUMIERE_PRODUCTS = [
     origin: "Bologna, Italy",
     care: "Specialist Leather Clean",
     images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCfCXnEoxSjm1vprDCZIO6xHGH4yyRMrAWoA0tdrYH1frMCHvrGY4V-ZZhXqiSM9kCn3qSQUvmnHioppH0PYXbG3rbYfkPaHKcsn3ZR8ql8d0e1YRexykhOPPIDOFMizI-KMK1spqGVVokHHgaEDlkdYqWOqoLb96JprRCRYp01BQC4GcvojMubvOv8ciX0N9Vo7njV3GrCND80HH79hmAixUYDGere_37Ohx0hXD0yf5GGXhDnx5AZSPTVgVvJfIiFRoudsiRMvAA",
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBrVpztCumLNBoAItFeOmuvk3f7I9J7dI2Cux0WS_1EFfYkjVp0UtaExlIar94q8V-FGB6tOgevReYSv3Tw-fWRO30TuLHGiWE3_enU1Wjm5JHhVwN9i9Oj89-NkWYO3mQlYedFWSGhb-IiP7mIOZBk-LwPP7dGN0KKM26wZ5x2wf0bkOONtcbrvcCXfeeBOClKdyr-uJUsd11xSzJiLjW6rLeaU0I1BgtItEI75tP-UCkkHBb5IQaLmhkdDi7Sk34iHShzuhCJ3mU"
     ],
     sizes: ["One Size"],
     colors: [
-      { name: "Nero", hex: "#0c0c0c" },
-      { name: "Espresso", hex: "#2b1e16" }
+      { name: "Nero", hex: "#0c0c0c" }
     ],
     featured: false
   },
@@ -171,6 +230,66 @@ const LUMIERE_PRODUCTS = [
     sizes: ["S", "M", "L"],
     colors: [
       { name: "Ink Black", hex: "#121214" }
+    ],
+    featured: false
+  },
+  {
+    id: "strappy-heel",
+    name: "Strappy Heel",
+    subtitle: "Architectural Footwear",
+    category: "Footwear",
+    price: 420,
+    formattedPrice: "$420.00",
+    description: "Minimalist square-toe sandal with ultra-fine leather straps and an asymmetric cylindrical heel.",
+    material: "Italian Nappa Leather",
+    origin: "Florence, Italy",
+    care: "Wipe clean with soft cloth",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDUa8Fu2pirc21alV0kkll4JTC40cGCnw0R0lD7k_-HsA2nh2k13E2KyefEiT0Zd_ziUQV9MUizb_5FHh3DB9FNZknNjgBZOaWqzwlbjZqy171-6RR5WPBfoizFR5ieFmMM3fQqEVYQbn5jfNegF4s-OV3aPsgAcPoCyO691SyCdLb4ePWzBOlOR_5VSCq9dfZkI8NK4H4Go-61c2Jcj-H3y3R7A1h858ASGCDQzK8K-R_CLWq2WBVgb0AFiUGZG2pgX_sVFlISjLw"
+    ],
+    sizes: ["36", "37", "38", "39", "40"],
+    colors: [
+      { name: "Midnight Black", hex: "#0b0b0d" }
+    ],
+    featured: false
+  },
+  {
+    id: "vault-clutch",
+    name: "Vault Clutch",
+    subtitle: "Structured Evening Bag",
+    category: "Accessories",
+    price: 1250,
+    formattedPrice: "$1,250.00",
+    description: "Geometric clutch sculpted from polished calf leather with polished brushed palladium hardware.",
+    material: "Smooth Box Calfskin",
+    origin: "Milan, Italy",
+    care: "Specialist Leather Clean",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCrWKCDpYrQY5Y7xe2byqE9mqOxrNaH1XtNMSzh_Xi0XARmUiKjkHskAPUjweDZa0UM7yAOouBh1kekBYosEf55vumCopVrk352BLZGvz9eZzsrCLgMwb7zwYEyqq6U5Dec6A5ld5RY27r55Tu_R94pH1YWe4XTNMy6zYvlqlImuh_X0qZ3t_wajzH1UIGWgyjIcAegb73Q8p3uPvlu9IoOwMNj_8vt7QTM0dTbiRI9demAzK2WLy9hK-1tv_mNJK3wxzAIdcFHGp0"
+    ],
+    sizes: ["One Size"],
+    colors: [
+      { name: "Black Satin", hex: "#111111" }
+    ],
+    featured: false
+  },
+  {
+    id: "helix-earrings",
+    name: "Helix Earrings",
+    subtitle: "Fine Jewelry",
+    category: "Accessories",
+    price: 310,
+    formattedPrice: "$310.00",
+    description: "Minimalist spiral drop earrings cast in 18k gold-plated recycled sterling silver.",
+    material: "18k Vermeil Sterling Silver",
+    origin: "Arezzo, Italy",
+    care: "Keep dry, store in pouch",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCrELrCmyNDCC7YEA2Sm9L-Yfore6rKn2vzEnwixIwR8vLXAsInPPl-HaFyZ0FNr2TgqNKdCXT81ok7BXrzjwNE94XVApkZbpWQqjw1AriPkQmFOE_MQ8fYloAHOXsnSGky4IUSnOkFh6tNOmrorkjmsk9296TXAnCh5JY8OZIt2aWfarsaa45VtGj6krcgin_45Jvf39c33Spx7R8lUoh4ZlmRHVg5PRQxxTETeCWa8y697slhXAvS_GodmW-8o-9Tsl-thZ_uWZw"
+    ],
+    sizes: ["One Size"],
+    colors: [
+      { name: "Warm Gold", hex: "#d4af37" }
     ],
     featured: false
   }

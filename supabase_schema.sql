@@ -138,5 +138,59 @@ VALUES
     ARRAY['S', 'M', 'L'],
     '[{"name": "Deep Charcoal", "hex": "#222222"}]'::jsonb,
     false
+),
+(
+    'archive-clutch',
+    'Archive Clutch',
+    'Calfskin Leather',
+    'Accessories',
+    890,
+    '$890.00',
+    'Architectural envelope clutch featuring hand-painted raw edges and concealed magnetic hardware.',
+    '100% Box Calf Leather',
+    'Bologna, Italy',
+    'Specialist Leather Clean',
+    ARRAY[
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCfCXnEoxSjm1vprDCZIO6xHGH4yyRMrAWoA0tdrYH1frMCHvrGY4V-ZZhXqiSM9kCn3qSQUvmnHioppH0PYXbG3rbYfkPaHKcsn3ZR8ql8d0e1YRexykhOPPIDOFMizI-KMK1spqGVVokHHgaEDlkdYqWOqoLb96JprRCRYp01BQC4GcvojMubvOv8ciX0N9Vo7njV3GrCND80HH79hmAixUYDGere_37Ohx0hXD0yf5GGXhDnx5AZSPTVgVvJfIiFRoudsiRMvAA'
+    ],
+    ARRAY['One Size'],
+    '[{"name": "Nero", "hex": "#0c0c0c"}]'::jsonb,
+    false
+),
+(
+    'structured-blazer',
+    'Structured Blazer',
+    'Tailored Virgin Wool',
+    'Tailoring',
+    1200,
+    '$1,200.00',
+    'Impeccably tailored single-breasted blazer with sharp structured shoulders, elongated lapels, and horn buttons.',
+    '100% Virgin Wool Flannel',
+    'Savile Row, London',
+    'Dry Clean Only',
+    ARRAY[
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuDa0AOJS1_hnUDp5sTjQBKwvZnErVdmSuRWibtbC2OxMO3YBdF2vh_CiiLc9g_tCKxgdGq3f10v4ukY2SsANfrB5kW-0aMpcnjq9nK-RtqAa7SX3BP5m-wuXR_TYoE1NXh5PDBD029VzWutYrCp9U6_6jKmmgoey9jm9pV_FkDAw5oL8lu3Ab2Msrhy1Cg_bidj5l8QCmmqjnpTydARkfmVWXqsW2mpfBjTQ5FpodtSNI1PCE9YUPZcu-7Bc6WJUCCx5wJcEsP4MhE'
+    ],
+    ARRAY['S', 'M', 'L', 'XL'],
+    '[{"name": "Ink Black", "hex": "#111114"}]'::jsonb,
+    true
+),
+(
+    'lumiere-trench-limited',
+    'Lumière Trench',
+    'Limited Edition / Atelier',
+    'Outerwear',
+    3100,
+    '$3,100.00',
+    'The pinnacle of our outerwear anthology. Limited to 25 individually numbered pieces worldwide.',
+    'Cashmere & Silk Twill',
+    'Paris, France',
+    'Specialist Atelier Care',
+    ARRAY[
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCY3wii-Z4qR0xFlKFPvv4vnkF_KTx2WERbN3fhmhdFxcIPOg2Xqx3nhnMLnNOaeuiT1JTmbY3IfHPS17KWSGxk5SPK6oVgMACf8_1yJHFqSqfGig6p218DlZ_NqVliWOvJcvyLTTmrKMcAjchrkZ5zShL-fujANRW9C-4arGKku9eklL5rhtuGkMtYkALlqKAKdF1Ye3Vn7mzV3VNl25R28XBPMPsvJgKpSwlxQKMbjUUttFxJIxX7Ue-cvdjJH-j72QnK0s8QSnA'
+    ],
+    ARRAY['S', 'M', 'L'],
+    '[{"name": "Pure Midnight", "hex": "#0d0d0f"}]'::jsonb,
+    true
 )
 ON CONFLICT (id) DO NOTHING;

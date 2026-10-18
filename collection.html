@@ -155,9 +155,45 @@
       <button onclick="resetFilters()" class="mt-4 px-8 py-3 bg-primary text-on-primary font-label text-xs uppercase tracking-widest">
         View All Pieces
       </button>
+    <!-- Pagination / Load More from Stitch Screen 3 -->
+    <div class="mt-32 mb-16 flex flex-col items-center">
+      <button onclick="showToast('All curated pieces for Collection 004 are currently displayed', 'info')" class="px-12 py-5 bg-primary text-on-primary font-label text-xs uppercase tracking-[0.3em] transition-all hover:bg-primary-container shadow-md">
+        Discover More
+      </button>
     </div>
-
   </main>
+
+  <!-- Sticky Sleek Filter Menu from Stitch Screen 3 -->
+  <div class="fixed bottom-20 left-0 w-full z-30 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/15 px-6 py-3 flex items-center justify-between overflow-x-auto no-scrollbar shadow-lg">
+    <div class="flex items-center space-x-6 sm:space-x-8">
+      <div class="flex items-center space-x-2 cursor-pointer hover:opacity-75" onclick="showToast('Sizing: XS, S, M, L, XL', 'straighten')">
+        <span class="font-label text-[0.65rem] uppercase tracking-widest text-outline">Size:</span>
+        <span class="font-label text-xs font-semibold text-black">ALL</span>
+        <span class="material-symbols-outlined text-xs">expand_more</span>
+      </div>
+      <div class="flex items-center space-x-2 cursor-pointer hover:opacity-75" onclick="showToast('All natural haute couture pigments', 'palette')">
+        <span class="font-label text-[0.65rem] uppercase tracking-widest text-outline">Color:</span>
+        <span class="w-3 h-3 bg-black rounded-full border border-outline-variant"></span>
+        <span class="font-label text-xs font-semibold text-black">ORIGINAL</span>
+        <span class="material-symbols-outlined text-xs">expand_more</span>
+      </div>
+      <div class="flex items-center space-x-2 cursor-pointer hover:opacity-75" onclick="showToast('Fabrics: Virgin Wool, Mulberry Silk, Canvas, Cashmere', 'texture')">
+        <span class="font-label text-[0.65rem] uppercase tracking-widest text-outline">Fabric:</span>
+        <span class="font-label text-xs font-semibold text-black">WOOL &amp; SILK</span>
+        <span class="material-symbols-outlined text-xs">expand_more</span>
+      </div>
+    </div>
+    <div class="hidden md:block">
+      <p id="sticky-item-count" class="font-label text-[0.6875rem] uppercase tracking-[0.2rem] text-primary font-medium">10 Pieces Curated</p>
+    </div>
+  </div>
+
+  <!-- FAB: Filter Trigger from Stitch Screen 3 -->
+  <div class="fixed bottom-36 right-6 z-40">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-14 h-14 bg-primary text-on-primary flex items-center justify-center shadow-2xl hover:scale-105 transition-transform" title="Back to Filters &amp; Top">
+      <span class="material-symbols-outlined">filter_list</span>
+    </button>
+  </div>
 
   <!-- ============================================================== -->
   <!-- FIXED BOTTOM NAVIGATION BAR -->
@@ -398,6 +434,10 @@
 
       if (countLabel) {
         countLabel.textContent = `Showing ${filtered.length} Piece${filtered.length === 1 ? '' : 's'}`;
+      }
+      const stickyCount = document.getElementById('sticky-item-count');
+      if (stickyCount) {
+        stickyCount.textContent = `${filtered.length} Pieces Curated`;
       }
 
       if (filtered.length === 0) {

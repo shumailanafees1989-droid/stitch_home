@@ -265,10 +265,14 @@
         LumiereState.wishlist = await apiGetWishlist();
       }
 
-      // Default sample items if user hasn't added anything yet, so the page is never bare
+      // Default sample items from Stitch Screen 1 if user hasn't added anything yet
       if (LumiereState.wishlist.length === 0) {
-        // Offer initial items
-        LumiereState.wishlist = ['sculpted-silk-gown', 'leather-obscura-bag'];
+        LumiereState.wishlist = [
+          'sculpted-silk-gown',
+          'archive-clutch',
+          'structured-blazer',
+          'lumiere-trench-limited'
+        ];
         localStorage.setItem('lumiere_wishlist', JSON.stringify(LumiereState.wishlist));
       }
 
