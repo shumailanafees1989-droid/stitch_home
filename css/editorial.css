@@ -26,6 +26,12 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(104%) saturate(106%);
+  transition: all 0.4s ease;
+}
+
 .font-headline {
   font-family: 'Noto Serif', serif;
 }

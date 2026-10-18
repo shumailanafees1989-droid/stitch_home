@@ -416,11 +416,11 @@
 
         html += `
           <div class="${colClass} group">
-            <div class="relative bg-surface-container-lowest overflow-hidden">
+            <div class="relative bg-surface-container-lowest overflow-hidden shadow-md">
               <a href="product.html?id=${product.id}" class="block">
-                <img alt="${product.name}" class="w-full aspect-[4/5] object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0" src="${product.images[0]}"/>
+                <img alt="${product.name}" class="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105" src="${product.images[0]}"/>
               </a>
-              <button onclick="toggleWishlistItem('${product.id}', this)" data-wishlist-id="${product.id}" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-surface-container-lowest/80 backdrop-blur-sm transition-all hover:scale-110" title="Save to Wishlist">
+              <button onclick="toggleWishlistItem('${product.id}', this)" data-wishlist-id="${product.id}" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-surface-container-lowest/90 backdrop-blur-sm transition-all hover:scale-110 shadow" title="Save to Wishlist">
                 <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: ${heartFill};">favorite</span>
               </button>
             </div>
@@ -432,11 +432,11 @@
                 </a>
                 <p class="font-label text-xs uppercase tracking-widest text-outline mt-1">${product.subtitle}</p>
               </div>
-              <span class="font-body text-lg font-light">${product.formattedPrice}</span>
+              <span class="font-body text-lg font-medium text-black">${product.formattedPrice}</span>
             </div>
 
             <div class="mt-4 flex items-center space-x-4">
-              <button onclick="addToCart('${product.id}', '${product.sizes[0] || 'M'}', '${product.colors[0]?.name || 'Mono'}', 1)" class="bg-primary text-on-primary px-6 py-2.5 font-label text-[11px] uppercase tracking-widest hover:bg-primary-container transition-colors">
+              <button onclick="addToCart('${product.id}', '${product.sizes[0] || 'M'}', '${product.colors[0]?.name || 'Mono'}', 1)" class="bg-primary text-on-primary px-6 py-2.5 font-label text-[11px] uppercase tracking-widest hover:bg-primary-container transition-colors shadow">
                 Add to Bag
               </button>
               <a href="product.html?id=${product.id}" class="editorial-underline font-label text-[11px] uppercase tracking-widest text-primary">
